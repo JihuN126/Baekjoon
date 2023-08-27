@@ -1,5 +1,4 @@
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
@@ -9,7 +8,7 @@ public class Main {
     static int[] Arr;
     static int answer = 0;
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
 
@@ -29,7 +28,7 @@ public class Main {
             for(int j=i+1; j<N; j++){
                 Cnt = true;
                 for(int k=i+1; k<j; k++){
-                    if(check(i,j,k) <= 0){
+                    if(Check(i,j,k) <= 0){
                         Cnt = false;
                         break;
                     }
@@ -42,7 +41,7 @@ public class Main {
         }
     }
 
-    static long check(int a, int b, int c){
+    static long Check(int a, int b, int c){
         return  (long)a*Map[c] + (long)b*Map[a] + (long)c*Map[b] - ((long)a*Map[b] + (long)b*Map[c] + (long)c*Map[a]);
     }
 }
