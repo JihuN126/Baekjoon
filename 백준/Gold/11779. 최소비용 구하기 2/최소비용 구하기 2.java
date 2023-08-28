@@ -1,9 +1,9 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
+import java.util.Stack;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
-import java.util.Stack;
 
 public class Main {
     static class Bus{
@@ -22,7 +22,6 @@ public class Main {
         StringTokenizer st;
         int N = Integer.parseInt(br.readLine());
         int M = Integer.parseInt(br.readLine());
-        int Cnt=1;
         Graph = new ArrayList[N+1];
         Dist = new int[N+1];
         Visit = new boolean[N+1];
@@ -42,16 +41,14 @@ public class Main {
         int Depart = Integer.parseInt(st.nextToken());
         int Arrival = Integer.parseInt(st.nextToken());
         System.out.println(Dijkstra(Depart,Arrival));
-        Stack<Integer> s= new Stack<>();
-     	s.push(Arrival);
-     	while (Route[Arrival] != 0) {
-     		Cnt += 1;
-     		s.push(Route[Arrival]);
-     		Arrival = Route[Arrival];
-     	}
-     	System.out.println(Cnt);
-     	while (!s.isEmpty()) System.out.print(s.pop() + " ");
-
+        ArrayList<Integer> RouteList = new ArrayList<>();
+        RouteList.add(Arrival);
+        while(Route[Arrival]!=0) {
+            RouteList.add(Route[Arrival]);
+            Arrival = Route[Arrival];
+        }
+        System.out.println(RouteList.size());
+        for(int i=0;i<RouteList.size();i++) System.out.print(RouteList.get(RouteList.size()-i-1)+" ");
     }
     static int Dijkstra(int Start, int End){
         PriorityQueue<Bus> q = new PriorityQueue<>((o1, o2) -> o1.Cost-o2.Cost);
@@ -71,3 +68,4 @@ public class Main {
         return Dist[End];
     }
 }
+
