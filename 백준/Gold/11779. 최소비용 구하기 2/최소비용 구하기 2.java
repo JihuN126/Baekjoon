@@ -1,9 +1,9 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
-import java.util.Stack;
 import java.util.StringTokenizer;
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Main {
     static class Bus{
@@ -42,15 +42,15 @@ public class Main {
         int Depart = Integer.parseInt(st.nextToken());
         int Arrival = Integer.parseInt(st.nextToken());
         System.out.println(Dijkstra(Depart,Arrival));
-        Stack<Integer> stack = new Stack<>();
-     	stack.push(Arrival);
+        Stack<Integer> s= new Stack<>();
+     	s.push(Arrival);
      	while (Route[Arrival] != 0) {
      		Cnt += 1;
-     		stack.push(Route[Arrival]);
+     		s.push(Route[Arrival]);
      		Arrival = Route[Arrival];
      	}
      	System.out.println(Cnt);
-     	while (!stack.isEmpty()) System.out.print(stack.pop() + " ");
+     	while (!s.isEmpty()) System.out.print(s.pop() + " ");
 
     }
     static int Dijkstra(int Start, int End){
@@ -65,11 +65,9 @@ public class Main {
                     Dist[Next.Destination] = temp.Cost + Next.Cost;
                     Route[Next.Destination] = temp.Destination;
                     q.add(new Bus(Next.Destination, Dist[Next.Destination]));
-
                 }
             }
         }
         return Dist[End];
     }
 }
-
