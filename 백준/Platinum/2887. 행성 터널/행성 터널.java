@@ -16,12 +16,15 @@ public class Main {
         Y = new long[N][2];
         Z = new long[N][2];
         Parent = new int[N];
-        for (int i = 1; i < N; i++) Parent[i] = i;
-        for (int i = 0; i < N; i++) {
+        for (int i=1;i<N;i++) Parent[i] = i;
+        for (int i=0;i<N;i++) {
             StringTokenizer st = new StringTokenizer(br.readLine());
-            X[i][0] = i; X[i][1] = Long.parseLong(st.nextToken());
-            Y[i][0] = i; Y[i][1] = Long.parseLong(st.nextToken());
-            Z[i][0] = i; Z[i][1] = Long.parseLong(st.nextToken());
+            X[i][0] = i; 
+            X[i][1] = Long.parseLong(st.nextToken());
+            Y[i][0] = i; 
+            Y[i][1] = Long.parseLong(st.nextToken());
+            Z[i][0] = i; 
+            Z[i][1] = Long.parseLong(st.nextToken());
         }
         Arrays.sort(X, new Comparator<long[]>() {
             @Override
